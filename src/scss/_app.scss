@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import "./mixins";
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  box-shadow: none;
+  font-family: Roboto, sans-serif;
+
+}
+
+.form {
+  width: 100vw;
+  margin: 0 auto;
+
+}
+
+.container {
+  display: flex;
+  background-image: url("../assets/main.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+}
+
+.formHeaders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 10rem;
+  top: 3rem;
+  z-index: 3;
+}
+
+.header {
+  margin: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #dcd328;
+  z-index: 4;
+  text-shadow: 2px 2px black;
+
+  &:hover {
+    font-weight: 600;
+    transition: 0.2s;
+  }
+}
+
+.form1 {
+  padding-right: 1rem;
+  padding-top: 8rem;
+  z-index: 3;
+}
+
+.formTextH1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+
+.labelName {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: .5rem .7rem .7rem;
+  color: rgba(19, 4, 1, 0.89);
+  z-index: 5;
+}
+
+.input {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: .2rem;
+  width: 20rem;
+  height: 2.8rem;
+  background-color: white;
+  display: block;
+  border-radius: 1rem;
+  color: #a4a4a4;
+  padding: 1rem;
+  box-shadow: none;
+  outline: none;
+}
+
+
+.submit {
+  font-size: 1.2rem;
+  font-weight: 400;
+  width: 20rem;
+  height: 2.8rem;
+  background-color: black;
+  display: block;
+  border-radius: 1rem;
+  color: white;
+  text-align: center;
+  max-width: 100%;
+  z-index: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  outline: none;
+  box-shadow: none;
+  border-color: black;
+}
+
+.formToLeft {
+  margin-left: auto;
+  margin-right: 5rem;
+
+}
+
+.formToRight {
+  margin-right: 5rem;
+  display: flex;
+  flex-direction: column;
+
+
+  @include notebook {
+    //width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}
+
+.image1 {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield; /* Chrome, Safari, Edge, and Opera */
+}
+
