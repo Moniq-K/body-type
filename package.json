@@ -18,8 +18,11 @@
     "vite": "4.4.5"
   },
   "dependencies": {
+    "lightbox.js-react": "^1.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "1.67.0"
+    "react-router-dom": "^6.3.0",
+    "sass": "1.67.0",
+    "yet-another-react-lightbox": "^3.19.0"
   }
 }

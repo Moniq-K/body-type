@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 @import "./mixins";
+@import "./variables";
 
 
 html {
@@ -11,26 +12,28 @@ html {
   padding: 0;
   box-sizing: border-box;
   box-shadow: none;
-  font-family: Roboto, sans-serif;
-
+  font-family: $font-roboto;
 }
 
-.form {
-  width: 100vw;
-  margin: 0 auto;
-
-}
-
-.container {
+%flex-center {
   display: flex;
-  background-image: url("../assets/main.jpg");
+  justify-content: center;
+  align-items: center;
+}
+
+%section {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
-  position: relative;
+}
 
+
+.sectionForm {
+  position: relative;
+  @extend %section;
+  background-image: url("../assets/main.jpg");
 
   &:before {
     content: "";
@@ -44,41 +47,96 @@ html {
   }
 }
 
-.formHeaders {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container1 {
+  width: 40rem;
+  margin: 0 auto;
   position: absolute;
-  right: 10rem;
-  top: 3rem;
-  z-index: 3;
-}
+  top: 6rem;
+  right: 6rem;
 
-.header {
-  margin: 1.2rem;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #dcd328;
-  z-index: 4;
-  text-shadow: 2px 2px black;
-
-  &:hover {
-    font-weight: 600;
-    transition: 0.2s;
+  @include mobile {
+    padding: 1rem;
+    top: 0;
+    right: 0;
+    width: 100%;
   }
 }
 
-.form1 {
-  padding-right: 1rem;
-  padding-top: 8rem;
-  z-index: 3;
+.columns {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  position: relative;
+  z-index: 5;
+  gap: 1rem;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5rem;
+  }
+
+  .columns1 {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    position: relative;
+    z-index: 5;
+
+    @include mobile {
+      align-items: center;
+      justify-content: center;
+
+    }
+  }
+
+  .formHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 22rem;
+    left: 10rem;
+    z-index: 3;
+
+    @include mobile {
+      padding: 1rem 0 2rem;
+      top: 1rem;
+      left: 0;
+      width: 100%;
+    }
+  }
+
+
+
+
+  .formToLeft {
+    @extend %flex-center;
+    flex-direction: column;
+    width: 100%;
+    //min-height: 50vh;
+  }
+
+
+  .formToRight {
+    @extend %flex-center;
+    flex-direction: column;
+    width: 100%;
+    //min-height: 50vh;
+  }
+
 }
 
 .formTextH1 {
-  font-size: 3.5rem;
-  font-weight: 400;
-  letter-spacing: 0;
-  color: #0b0b0b;
+  font-size: 2rem;
+  font-weight: 500;
+  color: $primary-color;
+  @include mobile {
+    padding-top:0.3rem;
+    font-size: 1.7rem;
+  }
+
 }
 
 
@@ -86,76 +144,146 @@ html {
   font-size: 1.4rem;
   font-weight: 500;
   margin: .5rem .7rem .7rem;
-  color: rgba(19, 4, 1, 0.89);
+  color: $primary-color;
   z-index: 5;
 }
 
-.input {
-  font-size: 1.3rem;
+%input-submit {
+  font-size: 1.2rem;
   font-weight: 400;
   margin-bottom: .2rem;
-  width: 20rem;
-  height: 2.8rem;
-  background-color: white;
-  display: block;
+  width: 15rem;
+  height: 2.5rem;
   border-radius: 1rem;
-  color: #a4a4a4;
   padding: 1rem;
   box-shadow: none;
   outline: none;
 }
 
+.input {
+  @extend %input-submit;
+  background-color: $background-main;
+  color: $input-color;
+}
+
 
 .submit {
-  font-size: 1.2rem;
-  font-weight: 400;
-  width: 20rem;
-  height: 2.8rem;
-  background-color: black;
-  display: block;
-  border-radius: 1rem;
-  color: white;
+  @extend %input-submit;
+  padding: 0;
+  background-color: $primary-color;
+  color: $background-main;
   text-align: center;
   max-width: 100%;
   z-index: 1;
   text-transform: uppercase;
   text-decoration: none;
   margin-top: 2rem;
-  margin-bottom: 1.5rem;
   overflow: hidden;
-  outline: none;
-  box-shadow: none;
-  border-color: black;
 }
 
-.formToLeft {
-  margin-left: auto;
-  margin-right: 5rem;
-
-}
-
-.formToRight {
-  margin-right: 5rem;
-  display: flex;
-  flex-direction: column;
-
-
-  @include notebook {
-    //width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-}
-
-.image1 {
-  padding: 0;
-  margin: 0;
-  height: 100vh;
-}
 
 input[type=number] {
   -moz-appearance: textfield; /* Firefox */
   appearance: textfield; /* Chrome, Safari, Edge, and Opera */
 }
 
+.textBold {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+  text-shadow: $text-shadow;
+  @include mobile {
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+  }
+}
+
+.textNormal {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: .5rem;
+  line-height: 1.6rem;
+  padding-top: 0.2rem;
+  @include mobile {
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+  }
+
+
+}
+
+.shapeTypeDescription {
+  background-color: $background-alpha;;
+  box-shadow: $box-shadow;
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem 1.4rem 5rem 1.4rem;
+  position: relative;
+
+  @include mobile {
+    width: 87%;
+    justify-content: center;
+    padding: 1rem 1.5rem 5rem 1.5rem;
+  }
+}
+
+.sectionShape {
+  background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  max-width: 100vw;
+  background-image: url("../assets/woman4.jpg");
+}
+
+.shapeImageToLeft {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.8rem;
+  z-index: 3;
+
+  @include mobile {
+    visibility: hidden;
+    position: absolute;
+  }
+}
+
+.logoImage {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  z-index: 3;
+}
+
+
+.descriptionToRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+}
+
+button {
+  color: $background-main;
+  background-color: $primary-color;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  width: 52%;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  border: none;
+  position: absolute;
+  right: 1.5rem;
+  bottom: 2rem;
+
+  @include mobile {
+    right: 1.5rem;
+    bottom: 2rem;
+  }
+}
